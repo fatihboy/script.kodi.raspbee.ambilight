@@ -53,27 +53,32 @@ class MyPlayer(xbmc.Player):
     xbmc.Player.__init__(self)
   
   def onPlayBackStarted(self):
+    xbmc.log("Kodi Raspbee: DEBUG playback started called on player")
     if self.isPlayingVideo():
       self.playingvideo = True
       self.duration = self.getTotalTime()
       state_changed("started", self.duration)
 
   def onPlayBackPaused(self):
+    xbmc.log("Kodi Raspbee: DEBUG playback paused called on player")
     if self.isPlayingVideo():
       self.playingvideo = False
       state_changed("paused", self.duration)
 
   def onPlayBackResumed(self):
+    logger.debuglog("playback resumed called on player")
     if self.isPlayingVideo():
       self.playingvideo = True
       state_changed("resumed", self.duration)
 
   def onPlayBackStopped(self):
+    xbmc.log("Kodi Raspbee: DEBUG playback stopped called on player")
     if self.playingvideo:
       self.playingvideo = False
       state_changed("stopped", self.duration)
 
   def onPlayBackEnded(self):
+    xbmc.log("Kodi Raspbee: DEBUG playback ended called on player")
     if self.playingvideo:
       self.playingvideo = False
       state_changed("stopped", self.duration)
@@ -98,13 +103,15 @@ class Raspbee:
 
     if self.params == {}:
       if self.settings.bridge_ip not in ["-", "", None]:
-        self.test_connection()
+        result = self.test_connection()
+        if result:
+          self.update_settings()
     elif self.params['action'] == "discover":
       self.logger.debuglog("Starting discovery")
       notify("Bridge discovery", "starting")
-      sonuc = self.start_autodiscover()
-      raspbee_ip = sonuc['ip']
-      raspbee_port = sonuc['port']
+      discovery_result = self.start_autodiscover()
+      raspbee_ip = discovery_result['ip']
+      raspbee_port = discovery_result['port']
       if raspbee_ip != None:
         notify("Bridge discovery", "Found bridge at: %s:%s" % (raspbee_ip,raspbee_port))
         username = self.register_user(raspbee_ip, raspbee_port)
@@ -121,8 +128,12 @@ class Raspbee:
       # not yet implemented
       self.logger.debuglog("unimplemented action call: %s" % self.params['action'])
 
+    response = json.loads(xbmc.executeJSONRPC('{"jsonrpc":"2.0","method":"Settings.GetSettingValue", "params":{"setting":"videoplayer.pauseafterrefreshchange"},"id":1}'))
+    #logger.debuglog(isinstance(response, dict))
+    if "result" in response and "value" in response["result"]:
+      pauseafterrefreshchange = int(response["result"]["value"])
+      
     if self.connected:
-      self.update_settings()
       if self.settings.misc_initialflash:
         self.flash_lights()
 
@@ -222,6 +233,7 @@ class Raspbee:
     else:
       notify("Kodi Raspbee", "Connected")
       self.connected = True
+    return self.connected
 
   def dim_lights(self):
     self.logger.debuglog("class RaspBee: dim lights")
