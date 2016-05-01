@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+  <string id="100">Bridge Konfig</string>
+  <string id="101">Automatische Konfiguration starten</string>
+  <string id="102">Bridge IP-Adresse</string>
+  <string id="103">Bridge Port</string>
+  <string id="104">Bridge User</string>
+
+  <string id="200">Modus</string>
+  <string id="201">Modus</string>
+  <string id="202">Ambilight</string>
+  <string id="203">Theater</string>
+
+  <string id="300">Lampen</string>
+  <string id="301">Anzahl</string>
+  <string id="302">Gruppe von Lampen</string>
+  <string id="303">Einzelne Lampe</string>
+  <string id="304">Zwei Lampen</string>
+  <string id="305">Drei Lampen</string>
+  <string id="306">ID Lampe 1</string>
+  <string id="307">ID Lampe 2</string>
+  <string id="308">ID Lampe 3</string>
+  <string id="309">Gruppen ID (0 = Alle Lampen)</string>
+  <string id="310">Die Nutzung einer Gruppe kann sehr langsam sein!</string>
+
+  <string id="400">Weitere Einstellungen</string>
+  <string id="401">Aktiviere Aufleuchten beim Start</string>
+  <string id="402">Deaktivieren bei Kurzfilmen</string>
+  <string id="601">Lampen bei Wiedergabe dimmen</string>
+  <string id="602">Gruppen ID (0 = Alle Lampen)</string>
+
+  <string id="500">Erweitert</string>
+  <string id="510">Kodi muss neugestartet werden damit diese Änderungen wirksam werden</string>
+  <string id="501">Gedimmte Helligkeit</string>
+  <string id="511">Normale Helligkeit überschreiben</string>
+  <string id="502">Normale Helligkeit</string>
+  <string id="513">Helligkeit für Pause überschreiben</string>
+  <string id="512">Helligkeit für Pausen</string>
+  <string id="603">Minimale Helligkeit für Ambilight</string>
+  <string id="604">Maximale Helligkeit für Ambilight</string>
+
+  <string id="507">Übergangszeit gedimmt/normal</string>
+  <string id="506">Hue Farben überschreiben</string>
+  <string id="503">Gedimmte Hue Farbe</string>
+  <string id="504">Normale Hue Farbe</string>
+  <string id="605">Color Bias. 6=variety with >1 light, 36=accuracy</string>
+
+  <string id="505">Debug logging</string>
+</strings>
