@@ -93,21 +93,21 @@ class Raspbee:
     self.settings = settings
     self._parse_argv(args)
 
-    if self.settings.bridge_user not in ["-", "", None]:
+    if self.settings.bridge_user not in ["-", "", None] and self.connected:
       self.update_settings()
 
     if self.params == {}:
       if self.settings.bridge_ip not in ["-", "", None]:
         self.test_connection()
     elif self.params['action'] == "discover":
-      self.logger.debuglog("Starting discover")
+      self.logger.debuglog("Starting discovery")
       notify("Bridge discovery", "starting")
       sonuc = self.start_autodiscover()
       raspbee_ip = sonuc['ip']
       raspbee_port = sonuc['port']
       if raspbee_ip != None:
         notify("Bridge discovery", "Found bridge at: %s:%s" % (raspbee_ip,raspbee_port))
-        username = register_user(raspbee_ip, raspbee_port)
+        username = self.register_user(raspbee_ip, raspbee_port)
         self.logger.debuglog("Updating settings")
         self.settings.update(bridge_ip = raspbee_ip)
         self.settings.update(bridge_port = raspbee_port)
@@ -165,6 +165,26 @@ class Raspbee:
         self.logger.debuglog("dresden api did not find bridge")
         
     return { 'ip': raspbee_ip, 'port': raspbee_port }
+
+  def register_user(raspbee_ip, raspbee_port):
+    device = "kodi-raspbee-addon"
+    data = '{"devicetype": "%s#%s"}' % (device, xbmc.getInfoLabel('System.FriendlyName')[0:19])
+    self.logger.debuglog("sending data: %s" % data)
+
+    r = requests.post('http://%s:%s/api' % (raspbee_ip, raspbee_port), data=data)
+    response = r.text
+    while "link button not pressed" in response:
+      self.logger.debuglog("register user response: %s" % r)
+      notify("Bridge discovery", "press link button on bridge")
+      r = requests.post('http://%s:%s/api' % (raspbee_ip, raspbee_port), data=data)
+      response = r.text 
+      time.sleep(3)
+
+    j = r.json()
+    self.logger.debuglog("got a username response: %s" % j)
+    username = j[0]['success']['username']
+    
+    return username
 
   def flash_lights(self):
     self.logger.debuglog("class RaspBee: flashing lights")
