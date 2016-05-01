@@ -1,51 +1,93 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
-  <string id="100">Köprü Yaplandırması</string>
-  <string id="101">Otomatik Yapılandırmayı Başlat</string>
-  <string id="102">Köprü IP'si</string>
-  <string id="103">Köprü Port'u</string>
-  <string id="104">Köprü Kullanıcı Adı</string>
+  <!-- Ana Ayarlar -->
+  <string id="1000">Ana Ayarlar</string>
 
-  <string id="200">Mod</string>
-  <string id="201">Mod</string>
-  <string id="202">Ambilight</string>
-  <string id="203">Tiyatro</string>
+  <string id="1100">Köprü Yaplandırması</string>
+  <string id="1101">Otomatik Yapılandırmayı Başlat</string>
+  <string id="1102">Köprü IP'si</string>
+  <string id="1103">Köprü Port'u</string>
+  <string id="1104">Köprü Kullanıcı Adı</string>
 
-  <string id="300">Işıklar</string>
-  <string id="301">Etkinleştirme</string>
-  <string id="302">bir grup ışık</string>
-  <string id="303">tek bir ışık</string>
-  <string id="304">iki ışık</string>
-  <string id="305">üç ışık</string>
-  <string id="306">Ampül ID 1</string>
-  <string id="307">Ampül ID 2</string>
-  <string id="308">Ampül ID 3</string>
-  <string id="309">Grup id (0=tüm ışıklar)</string>
-  <string id="310">Bir ışık grubu için Ambilight özelliği çok yavaştır (Denemesi size kalmış)</string>
+  <string id="1200">Kip Seçimi</string>
+  <string id="1201">Kip</string>
+  <string id="1202">Ambilight</string>
+  <string id="1203">Tiyatro</string>
 
-  <string id="400">Çeşitli ayarlar</string>
-  <string id="401">İlk parlamayı etkinleştir</string>
-  <string id="402">Kısa filmler için devre dışı bırak</string>
-  <string id="403">Işıkları açılmaya zorla (kapalı olsalar bile)</string>
-  <string id="404">Kısa film eşiği (saniye)</string>
+  <string id="1300">Işıklar</string>
+  <string id="1301">Aktif</string>
+  <string id="1302">Işık grubu</string>
+  <string id="1303">Tek bir ışık</string>
+  <string id="1304">İki ışık</string>
+  <string id="1305">Üç ışık</string>
+  <string id="1306">Işık ID 1</string>
+  <string id="1307">Işık ID 2</string>
+  <string id="1308">Işık ID 3</string>
+  <string id="1309">Grup ID (0=Tüm ışıklar)</string>
+  <string id="1310">Ambilight using a group of lights is too slow (but you're welcome to try)</string>
 
-  <string id="500">Gelişmiş ayarlar</string>
-  <string id="510">Değişiklikler Kodi'yi yeniden başlattıktan sonra aktif olacaktır</string>
-  <string id="501">Sönük parlaklık</string>
-  <string id="502">Sönük olmayan parlaklık</string>
-  <string id="513">Durdurma parlaklığının üzerine yaz</string>
-  <string id="512">Durdurma parlaklığı</string>
-  <string id="507">Sönük/sönük olmayan geçiş süresi</string>
-  <string id="506">Hue reklerinin üzerine yaz</string>
-  <string id="503">Sönük Hue rengi</string>
-  <string id="504">Sönük olmayan Hue rengi</string>
-  <string id="505">Hata güncesi</string>
-  <string id="511">Sönük olmayan parlaklığı üzerine yaz</string>
+  <!-- Tiyatro -->
+  <string id="2000">Tiyatro</string>
 
-  <string id="600">Ambilight</string>
-  <string id="601">Oynatma başladığında bir grup ışığı söndür</string>
-  <string id="602">Söndürülecek grup id</string>
-  <string id="603">Ambilight minimum parlaklığı</string>
-  <string id="604">Ambilight maksimum parlaklığı</string>
-  <string id="605">Renk eğilimi. 6=çeşitlilik >1 ışık, 36=kesinlik</string>
+  <string id="2100">Karartma</string>
+  <string id="2101">Geçiş süresi (saniye)</string>
+  <string id="2102">Oransal geçiş süresi</string>
+  <string id="2103">Örneğin: Karartma %70 ise geçiş süresinin %70'ini alır</string>
+  <string id="2104">Karartma parlaklığı</string>
+  <string id="2105">Karartılmamış parlaklığın üstüne yaz</string>
+  <string id="2106">Karartılmamış parlaklık</string>
+  <string id="2107">Durdurma parlaklığının üstene yaz</string>
+  <string id="2108">Durdurma parlaklığı</string>
+
+  <string id="2200">Renk</string>
+  <string id="2201">Ton üstüne yaz</string>
+  <string id="2202">Karartılmış ton</string>
+  <string id="2203">Karartılmamış ton</string>
+  <string id="2204">Canlılığın üstüne yaz</string>
+  <string id="2205">Karartılmış canlılık</string>
+  <string id="2206">Karartılmamış canlılık</string>
+
+  <string id="2300">Credits - DENEYSEL</string>
+  <string id="2301">Credits sırasında karartma</string>
+  <string id="2302">Oynatma sırasında credits'i tespit etmek için ChapterDB.org sitesini sorgular</string>
+  <string id="2303">UYARI: Bu ayar filmin ortasında ışıkların açılmasına neden olabilir.</string>
+  <string id="2304">Credits başlamasından sonra aydınlatma için bekleme (saniye)</string>
+
+  <!-- Ambilight -->
+  <string id="3000">Ambilight</string>
+  
+  <string id="3100">Karartma</string>
+  <string id="3101">Oynatmadan önce karart</string>
+  <string id="3102">Işık grubu</string>
+  <string id="3103">Tek bir ışık</string>
+  <string id="3104">İki ışık</string>
+  <string id="3105">Üç ışık</string>
+  <string id="3106">Işık ID 1</string>
+  <string id="3107">Işık ID 2</string>
+  <string id="3108">Işık ID 3</string>
+  <string id="3109">Grup ID (0=Tüm ışıklar)</string>
+
+  <string id="3200">Parlaklık</string>
+  <string id="3201">Minimum parlaklık</string>
+  <string id="3202">Maksimum parlaklık</string>
+
+  <string id="3300">Renk</string>
+  <string id="3301">Renk Eğilimi</string>
+  <string id="3302">Renk eğilimi: 6=çeşitlilik >1 ışık, 36=kesinlik</string>
+
+  <!-- Gelişmiş -->
+  <string id="4000">Gelişmiş</string>
+
+  <string id="4100">Çeşitli Ayarlar</string>
+  <string id="4101">Açılış parlamasını aktive et</string>
+  <string id="4102">kısa filmler için devre dışı bırak</string>
+  <string id="4103">Kısa Film Eşiği (saniye)</string>
+  <string id="4104">Işıkları açılmaya zorla (kapalı olsalar bile)</string>
+  <string id="4105">Group on and brightness start states overridden by members</string>
+
+  <string id="4200">Hata Ayıklama</string>
+  <string id="4201">Hata güncesi</string>
+
+  <string id="4300">DİKKAT: TÜM AYARLARI SIFIRLA</string>
+  <string id="4301">Tüm ayarları sıfıla (devre dışı bırakıp yeniden etkinleştirme gerektirir)</string>
 </strings>
