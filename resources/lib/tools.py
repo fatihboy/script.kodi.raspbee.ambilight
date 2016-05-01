@@ -111,6 +111,8 @@ class Light:
     
     else:
       self.livingwhite = True
+      
+    self.logger.debuglog("light %s start settings: %s" % (self.light, self.start_setting))
 
   # def set_light(self, data):
   #   self.logger.debuglog("set_light: %s: %s" % (self.light, data))
