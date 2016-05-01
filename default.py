@@ -122,6 +122,7 @@ class Raspbee:
       self.logger.debuglog("unimplemented action call: %s" % self.params['action'])
 
     if self.connected:
+      self.update_settings()
       if self.settings.misc_initialflash:
         self.flash_lights()
 
@@ -192,7 +193,7 @@ class Raspbee:
     
     return username
 
-    def flash_lights(self):
+  def flash_lights(self):
     self.logger.debuglog("class RaspBee: flashing lights")
     if self.settings.light == 0:
       self.light.flash_light()
