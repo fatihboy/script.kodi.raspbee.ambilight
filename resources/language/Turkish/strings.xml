@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+  <string id="100">Köprü Yaplandırması</string>
+  <string id="101">Otomatik Yapılandırmayı Başlat</string>
+  <string id="102">Köprü IP'si</string>
+  <string id="103">Köprü Port'u</string>
+  <string id="104">Köprü Kullanıcı Adı</string>
+
+  <string id="200">Mod</string>
+  <string id="201">Mod</string>
+  <string id="202">Ambilight</string>
+  <string id="203">Tiyatro</string>
+
+  <string id="300">Işıklar</string>
+  <string id="301">Etkinleştirme</string>
+  <string id="302">bir grup ışık</string>
+  <string id="303">tek bir ışık</string>
+  <string id="304">iki ışık</string>
+  <string id="305">üç ışık</string>
+  <string id="306">Ampül ID 1</string>
+  <string id="307">Ampül ID 2</string>
+  <string id="308">Ampül ID 3</string>
+  <string id="309">Grup id (0=tüm ışıklar)</string>
+  <string id="310">Bir ışık grubu için Ambilight özelliği çok yavaştır (Denemesi size kalmış)</string>
+
+  <string id="400">Çeşitli ayarlar</string>
+  <string id="401">İlk yanıp sönmeyi etkinleştir</string>
+  <string id="402">Kısa filmler içn devre dışı bırak</string>
+
+  <string id="500">Gelişmiş ayarlar</string>
+  <string id="510">Değişiklikler Kodi'yi yeniden başlattıktan sonra aktif olacaktır</string>
+  <string id="501">Sönük parlaklık</string>
+  <string id="502">Sönük olmayan parlaklık</string>
+  <string id="513">Durdurma parlaklığının üzerine yaz</string>
+  <string id="512">Durdurma parlaklığı</string>
+  <string id="507">Sönük/sönük olmayan geçiş süresi</string>
+  <string id="506">Hue reklerinin üzerine yaz</string>
+  <string id="503">Sönük Hue rengi</string>
+  <string id="504">Sönük olmayan Hue rengi</string>
+  <string id="505">Hata güncesi</string>
+  <string id="511">Sönük olmayan parlaklığı üzerine yaz</string>
+
+  <string id="600">Ambilight</string>
+  <string id="601">Oynatma başladığında bir grup ışığı söndür</string>
+  <string id="602">Söndürülecek grup id</string>
+  <string id="603">Ambilight minimum parlaklığı</string>
+  <string id="604">Ambilight maksimum parlaklığı</string>
+  <string id="605">Renk eğilimi. 6=çeşitlilik >1 ışık, 36=kesinlik</string>
+</strings>
