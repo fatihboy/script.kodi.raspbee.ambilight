@@ -155,8 +155,8 @@ class Raspbee:
         	raspbee_ip = parsed_url.hostname
         	raspbee_port = parsed_url.port
         time.sleep(1)
-        except socket.timeout:
-          break #if the socket times out once, its probably not going to complete at all. fallback to nupnp.
+      except socket.timeout:
+        break #if the socket times out once, its probably not going to complete at all. fallback to nupnp.
 
     if raspbee_ip == None:
       #still nothing found, try alternate api
@@ -510,7 +510,7 @@ def state_changed(state, duration):
   if state == "started":
     logger.debuglog("retrieving current setting before starting")
     
-    if raspbee.settings.light == 0:
+    if raspbee.settings.light == 0: # group mode
       raspbee.light.get_current_setting()
     else:
       raspbee.light[0].get_current_setting()
@@ -525,7 +525,7 @@ def state_changed(state, duration):
       #start capture when playback starts
       capture_width = 32 #100
       capture_height = capture_width / capture.getAspectRatio()
-      if capture_height == 0
+      if capture_height == 0:
         capture_height = capture_width #fix for divide by zero.
       logger.debuglog("capture %s x %s" % (capture_width, capture_height))
       capture.capture(int(capture_width), int(capture_height), xbmc.CAPTURE_FLAG_CONTINUOUS)
