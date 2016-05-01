@@ -134,23 +134,29 @@ class Raspbee:
     HOST: %s:%s
     MAN: ssdp:discover
     MX: 3
-    ST: upnp:rootdevice""" % (ip, port)
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    ST: upnp:rootdevice
+    """ % (ip, port)
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) #force udp
+    client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    client_socket.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, 2)
 
     raspbee_ip = None
     raspbee_port = None
     num_retransmits = 0
     while(num_retransmits < 10) and raspbee_ip == None:
       num_retransmits += 1
-      client_socket.sendto(data, address)
-      recv_data, addr = client_socket.recvfrom(2048)
-      self.logger.debuglog("received data during autodiscovery: "+recv_data)
-      if "IpBridge" in recv_data and "description.xml" in recv_data:
-        url = recv_data.split("LOCATION: ")[1]
-        parsed_url = o = urlparse.urlparse(url)
-        raspbee_ip = parsed_url.hostname
-        raspbee_port = parsed_url.port
-      time.sleep(1)
+      try:
+        client_socket.sendto(data, address)
+        recv_data, addr = client_socket.recvfrom(2048)
+        self.logger.debuglog("received data during autodiscovery: "+recv_data)
+        if "IpBridge" in recv_data and "description.xml" in recv_data:
+        	url = recv_data.split("LOCATION: ")[1]
+        	parsed_url = o = urlparse.urlparse(url)
+        	raspbee_ip = parsed_url.hostname
+        	raspbee_port = parsed_url.port
+        time.sleep(1)
+        except socket.timeout:
+          break #if the socket times out once, its probably not going to complete at all. fallback to nupnp.
 
     if raspbee_ip == None:
       #still nothing found, try alternate api
@@ -160,9 +166,9 @@ class Raspbee:
         raspbee_ip=j[0]["internalipaddress"]
         raspbee_port=j[0]["internalport"]
         
-        self.logger.debuglog("dresden api returned: "+raspbee_ip)
+        self.logger.debuglog("dresden nupnp api returned: "+raspbee_ip)
       else:
-        self.logger.debuglog("dresden api did not find bridge")
+        self.logger.debuglog("dresden nupnp api did not find bridge")
         
     return { 'ip': raspbee_ip, 'port': raspbee_port }
 
