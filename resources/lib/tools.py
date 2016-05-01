@@ -59,6 +59,8 @@ class Light:
     self.undim_bri    = settings.undim_bri
     self.undim_hue    = settings.undim_hue
     self.override_undim_bri = settings.override_undim_bri
+    self.force_light_on = settings.force_light_on
+    
     self.onLast = True
     self.hueLast = 0
     self.satLast = 0
@@ -120,6 +122,11 @@ class Light:
   #     (self.bridge_ip, self.bridge_user, self.light), data=data)
 
   def set_light2(self, hue, sat, bri, dur=20):
+  
+    if self.start_setting["on"] == False and self.force_light_on == False:
+      self.logger.debuglog("light %r was off, settings say we should not turn it on" % self.light)
+      return
+      
     data = {}
 
     if not self.livingwhite:
@@ -244,7 +251,11 @@ class Group(Light):
   #     (self.bridge_ip, self.bridge_user, self.group_id), data=data)
 
   def set_light2(self, hue, sat, bri, dur=20):
-
+  
+    if self.start_setting["on"] == False and self.force_light_on == False:
+      self.logger.debuglog("light %r was off, settings say we should not turn it on" % self.light)
+      return
+      
     data = {}
 
     if not self.livingwhite:

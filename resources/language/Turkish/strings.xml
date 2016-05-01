@@ -26,6 +26,8 @@
   <string id="400">Çeşitli ayarlar</string>
   <string id="401">İlk parlamayı etkinleştir</string>
   <string id="402">Kısa filmler için devre dışı bırak</string>
+  <string id="403">Işıkları açılmaya zorla (kapalı olsalar bile)</string>
+  <string id="404">Kısa film eşiği (saniye)</string>
 
   <string id="500">Gelişmiş ayarlar</string>
   <string id="510">Değişiklikler Kodi'yi yeniden başlattıktan sonra aktif olacaktır</string>

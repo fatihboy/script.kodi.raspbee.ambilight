@@ -516,7 +516,7 @@ def state_changed(state, duration):
   if "result" in response and "value" in response["result"]:
     pauseafterrefreshchange = int(response["result"]["value"])
 
-  if duration < 300 and raspbee.settings.misc_disableshort:
+  if duration < raspbee.settings.misc_disableshort_threshold and raspbee.settings.misc_disableshort:
     logger.debuglog("add-on disabled for short movies")
     return
 

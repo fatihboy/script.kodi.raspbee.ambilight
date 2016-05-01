@@ -26,6 +26,8 @@
   <string id="400">Weitere Einstellungen</string>
   <string id="401">Aktiviere Aufleuchten beim Start</string>
   <string id="402">Deaktivieren bei Kurzfilmen</string>
+  <string id="403">Force-Lichter auf (auch wenn off)</string>
+  <string id="404">Short Movie Threshold (Sekunden)</string>
 
   <string id="500">Erweitert</string>
   <string id="501">Gedimmte Helligkeit</string>
