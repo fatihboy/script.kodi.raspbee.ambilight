@@ -49,6 +49,7 @@ class settings():
     self.color_bias            = int(int(__addon__.getSetting("color_bias").split(".")[0])/3*3)
     self.force_light_on        = __addon__.getSetting("force_light_on") == "true"
     self.force_light_group_start_override = __addon__.getSetting("force_light_group_start_override") == "true"
+    self.misc_enable_for_live_tv = __addon__.getSetting("misc_enable_for_live_tv") == "true"
 
     if self.ambilight_min > self.ambilight_max:
         self.ambilight_min = self.ambilight_max
@@ -95,4 +96,5 @@ class settings():
     'color_bias: %s\n' % str(self.color_bias) + \
     'force_light_on: %s\n' % str(self.force_light_on) + \
     'force_light_group_start_override: %s\n' % str(self.force_light_group_start_override) + \
+    'misc_enable_for_live_tv: %s\n' % str(self.misc_enable_for_live_tv) + \
     'debug: %s\n' % self.debug

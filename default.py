@@ -90,6 +90,7 @@ class MyPlayer(xbmc.Player):
       self.playingvideo = True
       self.duration = self.getTotalTime()
       self.movie = xbmc.getCondVisibility('VideoPlayer.Content(movies)')
+      self.livetv = xbmc.getCondVisibility('VideoPlayer.Content(LiveTV)')
 
       #logger.debuglog("mediainfo: %s" % get_log_mediainfo())
       if self.framerate == 0:
@@ -103,7 +104,7 @@ class MyPlayer(xbmc.Player):
         get_credits_info(self.getVideoInfoTag().getTitle(), self.duration) # TODO: start it on a timer to not block the beginning of the media
         logger.debuglog("credits_time: %r" % credits_time)
         self.timer = RepeatedTimer(1, self.checkTime)
-      state_changed("started", self.duration)
+      state_changed("started", self.duration, self.livetv)
 
   def onPlayBackPaused(self):
     xbmc.log("Kodi RaspBee: DEBUG playback paused called on player")
@@ -111,7 +112,7 @@ class MyPlayer(xbmc.Player):
       self.playingvideo = False
       if self.movie and not self.timer is None:
         self.timer.stop()
-      state_changed("paused", self.duration)
+      state_changed("paused", self.duration, self.livetv)
 
   def onPlayBackResumed(self):
     logger.debuglog("playback resumed called on player")
@@ -124,7 +125,7 @@ class MyPlayer(xbmc.Player):
           logger.debuglog("credits_time: %r" % credits_time)
       if self.movie and self.duration != 0:    
         self.timer = RepeatedTimer(1, self.checkTime)
-      state_changed("resumed", self.duration)
+      state_changed("resumed", self.duration, self.livetv)
 
   def onPlayBackStopped(self):
     xbmc.log("Kodi RaspBee: DEBUG playback stopped called on player")
@@ -134,7 +135,7 @@ class MyPlayer(xbmc.Player):
     self.playingvideo = False
     if self.movie and not self.timer is None:
       self.timer.stop()
-    state_changed("stopped", self.duration)
+    state_changed("stopped", self.duration, self.livetv)
 
   def onPlayBackEnded(self):
     xbmc.log("Kodi RaspBee: DEBUG playback ended called on player")
@@ -143,7 +144,7 @@ class MyPlayer(xbmc.Player):
       self.playingvideo = False
       if self.movie and not self.timer is None:
         self.timer.stop()
-      state_changed("stopped", self.duration)
+      state_changed("stopped", self.duration, self.livetv)
 
 class Raspbee:
   params = None
@@ -686,11 +687,18 @@ def check_time(cur_time):
       #still before credits, if this has happened, we've rewound
       credits_triggered = False
 
-def state_changed(state, duration):
+def state_changed(state, duration, livetv):
+  #could livetv check be improve ?!
   logger.debuglog("state changed to: %s" % state)
 
   if duration < raspbee.settings.misc_disableshort_threshold and raspbee.settings.misc_disableshort:
     logger.debuglog("add-on disabled for short movies")
+    return
+   
+  logger.debuglog("live tv check: %s -> %s" % (not raspbee.settings.misc_enable_for_live_tv, livetv))
+  
+  if not raspbee.settings.misc_enable_for_live_tv and livetv:
+    logger.debuglog("add-on disabled for live tv")
     return
 
   if state == "started":

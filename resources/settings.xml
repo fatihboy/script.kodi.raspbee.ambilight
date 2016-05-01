@@ -81,7 +81,8 @@
         <setting id="misc_disableshort" type="bool" label="4102" default="false" />
         <setting id="misc_disableshort_threshold" type="number" label="4103" default="120" enable="eq(-1,true)" />
         <setting id="force_light_on" type="bool" label="4104" default="false" />
-        <setting id="force_light_group_start_override" type="bool" label="4105" default="true" />
+        <setting id="force_light_group_start_override" type="bool" label="4105" default="true" />        
+        <setting id="misc_enable_for_live_tv" type="bool" label="4106" default="false" />
         <!--Debug-->
         <setting type="lsep" label="4200" />
         <setting id="debug" type="bool" label="4201" default="false" />

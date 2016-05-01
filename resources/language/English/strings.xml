@@ -84,6 +84,7 @@
   <string id="4103">Short Movie Threshold (seconds)</string>
   <string id="4104">Force Light(s) on (even if off)</string>
   <string id="4105">Group on and brightness start states overridden by members</string>
+  <string id="4106">Enable for Live TV</string>
 
   <string id="4200">Debug</string>
   <string id="4201">Debug logging</string>

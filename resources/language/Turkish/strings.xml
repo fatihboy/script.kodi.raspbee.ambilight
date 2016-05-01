@@ -83,7 +83,8 @@
   <string id="4102">kısa filmler için devre dışı bırak</string>
   <string id="4103">Kısa Film Eşiği (saniye)</string>
   <string id="4104">Işıkları açılmaya zorla (kapalı olsalar bile)</string>
-  <string id="4105">Group on and brightness start states overridden by members</string>
+  <string id="4105">Üyeler tarafından grup açık durumu ile parlaklık başlangıç durumunun üzerine yazılsın</string>
+  <string id="4106">Canlı TV yayını için de aktifleştir</string>
 
   <string id="4200">Hata Ayıklama</string>
   <string id="4201">Hata güncesi</string>

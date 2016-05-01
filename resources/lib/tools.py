@@ -71,6 +71,7 @@ class Light:
     self.override_undim_bri = settings.override_undim_bri
     self.force_light_on = settings.force_light_on
     self.force_light_group_start_override = settings.force_light_group_start_override
+    self.misc_enable_for_live_tv = settings.misc_enable_for_live_tv
 
     self.onLast = True
     self.hueLast = 0
